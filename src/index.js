@@ -14,6 +14,9 @@ app.use(express.json());
 app.use('/api',require('./routes/routes'));
 //static
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 //start server
 app.listen(app.get('port'), () => {
     console.log('server on port '+app.get('port'));
